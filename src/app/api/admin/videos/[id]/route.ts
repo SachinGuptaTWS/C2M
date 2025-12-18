@@ -3,10 +3,10 @@ import db from '@/lib/db';
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const videoId = params.id;
+    const { id: videoId } = await params;
     
     await db.query('DELETE FROM videos WHERE id = $1', [videoId]);
     

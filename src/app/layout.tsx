@@ -14,13 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Connect to Mentor",
-  description: "Unlock your potential with expert guidance from industry leaders. Join live mentoring sessions and accelerate your career growth.",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
-  },
+  title: "ConnectToMentor",
+  description: "Connect with mentors and accelerate your learning journey",
 };
 
 export default function RootLayout({

@@ -2,273 +2,205 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
-              Connect to <span className="text-blue-600">Mentor</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Unlock your potential with expert guidance from industry leaders. 
-              Join live mentoring sessions and accelerate your career growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/register"
-                className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Get Started
-              </Link>
-              <Link
-                href="/login"
-                className="px-8 py-3 border border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
-              >
-                Sign In
-              </Link>
+    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-zinc-800">
+      
+      {/* Background Grid Pattern */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-zinc-800 opacity-20 blur-[100px]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+        
+        {/* Navbar (Simplified) */}
+        <nav className="flex items-center justify-between py-8 border-b border-white/5">
+            <div className="text-sm font-medium tracking-tight text-white flex items-center gap-2">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+                Mentor<span className="text-zinc-500">Connect</span>
             </div>
+            <div className="flex gap-6 text-sm">
+                <Link href="/login" className="text-zinc-400 hover:text-white transition-colors">Log in</Link>
+                <Link href="/register" className="text-white hover:text-zinc-300 transition-colors">Sign up</Link>
+            </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="py-24 sm:py-32 text-center">
+          <div className="inline-flex items-center rounded-full border border-white/10 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400 backdrop-blur-xl mb-8">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-500 mr-2"></span>
+            New sessions available for December
           </div>
-        </div>
-      </section>
-
-      {/* Upcoming Sessions */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Upcoming Mentoring Sessions
-            </h2>
-            <p className="text-lg text-gray-600">
-              Don't miss these opportunities to learn from industry experts
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Session Card 1 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                    Upcoming
-                  </span>
-                  <span className="text-gray-500 text-sm">Dec 25, 2024</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Advanced React Patterns
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Master advanced React patterns including render props, HOCs, and custom hooks.
-                </p>
-                <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                    JD
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">John Doe</p>
-                    <p className="text-sm text-gray-500">Senior Frontend Engineer at Google</p>
-                  </div>
-                </div>
-                <div className="flex items-center text-gray-500 text-sm mb-4">
-                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  3:00 PM - 4:30 PM EST
-                </div>
-                <button className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                  Register Now
-                </button>
-              </div>
-            </div>
-
-            {/* Session Card 2 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                    Upcoming
-                  </span>
-                  <span className="text-gray-500 text-sm">Dec 27, 2024</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  System Design Fundamentals
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Learn the fundamentals of system design and architecture for scalable applications.
-                </p>
-                <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                    SJ
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Sarah Johnson</p>
-                    <p className="text-sm text-gray-500">Staff Engineer at Meta</p>
-                  </div>
-                </div>
-                <div className="flex items-center text-gray-500 text-sm mb-4">
-                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  5:00 PM - 6:30 PM EST
-                </div>
-                <button className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                  Register Now
-                </button>
-              </div>
-            </div>
-
-            {/* Session Card 3 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm font-medium rounded-full">
-                    Limited Seats
-                  </span>
-                  <span className="text-gray-500 text-sm">Dec 30, 2024</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Machine Learning Interview Prep
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Prepare for ML interviews with real-world problem solving and best practices.
-                </p>
-                <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                    MC
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Michael Chen</p>
-                    <p className="text-sm text-gray-500">ML Lead at OpenAI</p>
-                  </div>
-                </div>
-                <div className="flex items-center text-gray-500 text-sm mb-4">
-                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  2:00 PM - 3:30 PM EST
-                </div>
-                <button className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                  Register Now
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Mentors */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Featured Mentors
-            </h2>
-            <p className="text-lg text-gray-600">
-              Learn from the best in the industry
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Mentor 1 */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                JD
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">John Doe</h3>
-              <p className="text-gray-600 text-sm mb-2">Senior Frontend Engineer</p>
-              <p className="text-gray-500 text-xs mb-3">Google</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">React</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">TypeScript</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Node.js</span>
-              </div>
-            </div>
-
-            {/* Mentor 2 */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-purple-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                SJ
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Sarah Johnson</h3>
-              <p className="text-gray-600 text-sm mb-2">Staff Engineer</p>
-              <p className="text-gray-500 text-xs mb-3">Meta</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">System Design</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Distributed Systems</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Cloud</span>
-              </div>
-            </div>
-
-            {/* Mentor 3 */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                MC
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Michael Chen</h3>
-              <p className="text-gray-600 text-sm mb-2">ML Lead</p>
-              <p className="text-gray-500 text-xs mb-3">OpenAI</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Machine Learning</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Python</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Deep Learning</span>
-              </div>
-            </div>
-
-            {/* Mentor 4 */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-red-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                EP
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Emily Parker</h3>
-              <p className="text-gray-600 text-sm mb-2">Product Manager</p>
-              <p className="text-gray-500 text-xs mb-3">Microsoft</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Product Strategy</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Agile</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Leadership</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Accelerate Your Career?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of professionals who are already learning from industry experts.
+          
+          <h1 className="text-5xl sm:text-7xl font-medium tracking-tight text-white mb-8 mx-auto max-w-4xl">
+            Master your craft with <br className="hidden sm:block" />
+            <span className="text-zinc-500">world-class guidance.</span>
+          </h1>
+          
+          <p className="text-lg text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Direct access to engineers and leaders from the world's most innovative companies. No fluff, just technical mentorship.
           </p>
-          <Link
-            href="/register"
-            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Start Learning Today
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Connect to Mentor</h3>
-            <p className="text-gray-400 mb-4">
-              Empowering professionals through expert mentorship
-            </p>
-            <div className="flex justify-center space-x-6">
-              <Link href="/login" className="hover:text-white transition-colors">Sign In</Link>
-              <Link href="/register" className="hover:text-white transition-colors">Register</Link>
-              <Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link>
-            </div>
-            <p className="text-gray-500 text-sm mt-8">
-              © 2024 Connect to Mentor. All rights reserved.
-            </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/register"
+              className="h-10 px-6 rounded bg-white text-black text-sm font-medium hover:bg-zinc-200 transition-all flex items-center justify-center"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/login"
+              className="h-10 px-6 rounded border border-zinc-800 text-zinc-300 text-sm font-medium hover:bg-zinc-900 transition-all flex items-center justify-center"
+            >
+              View Schedule
+              <svg className="w-4 h-4 ml-2 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+            </Link>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* Sessions Grid */}
+        <section className="py-20 border-t border-white/5">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-xl font-medium text-white mb-2">Upcoming Sessions</h2>
+              <p className="text-sm text-zinc-500">Live technical deep-dives.</p>
+            </div>
+            <Link href="/sessions" className="text-xs text-zinc-400 hover:text-white transition-colors">View all &rarr;</Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="group relative bg-zinc-900/30 border border-white/5 rounded-xl p-6 hover:border-zinc-700 transition-all duration-300">
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-mono mb-1">Dec 25 · 15:00</span>
+                    <h3 className="text-lg font-medium text-white group-hover:text-zinc-200 transition-colors">Advanced React Patterns</h3>
+                </div>
+              </div>
+              
+              <p className="text-sm text-zinc-400 mb-6 line-clamp-2">
+                Render props, HOCs, and custom hooks implementation strategies for enterprise apps.
+              </p>
+
+              <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-[10px] text-zinc-300">JD</div>
+                  <span className="text-xs text-zinc-400">John Doe, Google</span>
+                </div>
+                <button className="text-xs text-white border border-zinc-700 bg-zinc-800/50 px-3 py-1.5 rounded hover:bg-zinc-800 transition-colors">Join</button>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group relative bg-zinc-900/30 border border-white/5 rounded-xl p-6 hover:border-zinc-700 transition-all duration-300">
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-mono mb-1">Dec 27 · 17:00</span>
+                    <h3 className="text-lg font-medium text-white group-hover:text-zinc-200 transition-colors">System Design Arch</h3>
+                </div>
+              </div>
+              
+              <p className="text-sm text-zinc-400 mb-6 line-clamp-2">
+                Fundamentals of distributed systems and scaling for millions of users.
+              </p>
+
+              <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-[10px] text-zinc-300">SJ</div>
+                  <span className="text-xs text-zinc-400">Sarah Johnson, Meta</span>
+                </div>
+                <button className="text-xs text-white border border-zinc-700 bg-zinc-800/50 px-3 py-1.5 rounded hover:bg-zinc-800 transition-colors">Join</button>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group relative bg-zinc-900/30 border border-white/5 rounded-xl p-6 hover:border-zinc-700 transition-all duration-300">
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-mono mb-1">Dec 30 · 14:00</span>
+                    <h3 className="text-lg font-medium text-white group-hover:text-zinc-200 transition-colors">ML Interview Prep</h3>
+                </div>
+              </div>
+              
+              <p className="text-sm text-zinc-400 mb-6 line-clamp-2">
+                Real-world problem solving and best practices for Machine Learning roles.
+              </p>
+
+              <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-[10px] text-zinc-300">MC</div>
+                  <span className="text-xs text-zinc-400">Michael Chen, OpenAI</span>
+                </div>
+                <button className="text-xs text-white border border-zinc-700 bg-zinc-800/50 px-3 py-1.5 rounded hover:bg-zinc-800 transition-colors">Join</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mentors List */}
+        <section className="py-20 border-t border-white/5">
+          <div className="mb-12">
+              <h2 className="text-xl font-medium text-white mb-2">Featured Mentors</h2>
+              <p className="text-sm text-zinc-500">Learn from engineers at the forefront.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Mentor 1 */}
+            <div className="bg-black border border-white/5 p-4 rounded-lg flex items-center gap-4 hover:bg-zinc-900/40 transition-colors cursor-default">
+               <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-medium text-white">JD</div>
+               <div>
+                  <h4 className="text-sm font-medium text-zinc-200">John Doe</h4>
+                  <p className="text-xs text-zinc-500">Google · Frontend</p>
+               </div>
+            </div>
+
+             {/* Mentor 2 */}
+             <div className="bg-black border border-white/5 p-4 rounded-lg flex items-center gap-4 hover:bg-zinc-900/40 transition-colors cursor-default">
+               <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-medium text-white">SJ</div>
+               <div>
+                  <h4 className="text-sm font-medium text-zinc-200">Sarah Johnson</h4>
+                  <p className="text-xs text-zinc-500">Meta · Systems</p>
+               </div>
+            </div>
+
+             {/* Mentor 3 */}
+             <div className="bg-black border border-white/5 p-4 rounded-lg flex items-center gap-4 hover:bg-zinc-900/40 transition-colors cursor-default">
+               <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-medium text-white">MC</div>
+               <div>
+                  <h4 className="text-sm font-medium text-zinc-200">Michael Chen</h4>
+                  <p className="text-xs text-zinc-500">OpenAI · ML</p>
+               </div>
+            </div>
+
+             {/* Mentor 4 */}
+             <div className="bg-black border border-white/5 p-4 rounded-lg flex items-center gap-4 hover:bg-zinc-900/40 transition-colors cursor-default">
+               <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-medium text-white">EP</div>
+               <div>
+                  <h4 className="text-sm font-medium text-zinc-200">Emily Parker</h4>
+                  <p className="text-xs text-zinc-500">Microsoft · Product</p>
+               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Minimal CTA */}
+        <section className="py-24 border-t border-white/5 text-center">
+            <h2 className="text-2xl font-medium text-white mb-6">Ready to accelerate your career?</h2>
+            <div className="flex justify-center gap-4">
+                <Link href="/register" className="text-sm bg-white text-black px-5 py-2.5 rounded hover:bg-zinc-200 transition-colors">Start Learning</Link>
+            </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-600 gap-4">
+            <p>© 2024 MentorConnect Inc.</p>
+            <div className="flex gap-6">
+                <Link href="#" className="hover:text-zinc-400">Terms</Link>
+                <Link href="#" className="hover:text-zinc-400">Privacy</Link>
+                <Link href="#" className="hover:text-zinc-400">Twitter</Link>
+            </div>
+        </footer>
+
+      </div>
     </div>
   );
 }

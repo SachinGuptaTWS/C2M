@@ -24,6 +24,8 @@ interface RegisterData {
   email: string;
   password: string;
   full_name: string;
+  phone_number: string;
+  interest: string;
   college_name: string;
   grad_year: number;
 }

@@ -34,10 +34,11 @@ export default function RegisterPage() {
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === 'grad_year' ? parseInt(value) : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,26 +55,6 @@ export default function RegisterPage() {
       setLoading(false);
     }
   };
-
-  // Helper for input fields to keep JSX clean
-  const InputField = ({ label, id, type = "text", placeholder, required = true, ...props }) => (
-    <div className="group">
-        <label htmlFor={id} className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
-            {label}
-        </label>
-        <input
-            id={id}
-            name={id}
-            type={type}
-            required={required}
-            className="w-full bg-zinc-900/50 border border-white/10 text-white text-sm rounded-lg px-4 py-2.5 outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-600 group-hover:border-white/20"
-            placeholder={placeholder}
-            value={formData[id]}
-            onChange={handleChange}
-            {...props}
-        />
-    </div>
-  );
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050505] relative overflow-hidden px-4 font-sans text-zinc-300 selection:bg-indigo-500/30 selection:text-indigo-200 py-12">
@@ -114,10 +95,69 @@ export default function RegisterPage() {
                 
                 {/* Grid for compact layout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <InputField label="Full Name" id="full_name" placeholder="John Doe" />
-                    <InputField label="Email Address" id="email" type="email" placeholder="name@company.com" />
-                    <InputField label="Password" id="password" type="password" placeholder="Create a strong password" />
-                    <InputField label="Phone Number" id="phone_number" type="tel" placeholder="+1 (555) 000-0000" />
+                    <div className="group">
+                        <label htmlFor="full_name" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
+                            Full Name
+                        </label>
+                        <input
+                            id="full_name"
+                            name="full_name"
+                            type="text"
+                            required
+                            className="w-full bg-zinc-900/50 border border-white/10 text-white text-sm rounded-lg px-4 py-2.5 outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-600 group-hover:border-white/20"
+                            placeholder="John Doe"
+                            value={formData.full_name}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    
+                    <div className="group">
+                        <label htmlFor="email" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
+                            Email Address
+                        </label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            required
+                            className="w-full bg-zinc-900/50 border border-white/10 text-white text-sm rounded-lg px-4 py-2.5 outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-600 group-hover:border-white/20"
+                            placeholder="name@company.com"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    
+                    <div className="group">
+                        <label htmlFor="password" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
+                            Password
+                        </label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            required
+                            className="w-full bg-zinc-900/50 border border-white/10 text-white text-sm rounded-lg px-4 py-2.5 outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-600 group-hover:border-white/20"
+                            placeholder="Create a strong password"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    
+                    <div className="group">
+                        <label htmlFor="phone_number" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
+                            Phone Number
+                        </label>
+                        <input
+                            id="phone_number"
+                            name="phone_number"
+                            type="tel"
+                            required
+                            className="w-full bg-zinc-900/50 border border-white/10 text-white text-sm rounded-lg px-4 py-2.5 outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-600 group-hover:border-white/20"
+                            placeholder="+1 (555) 000-0000"
+                            value={formData.phone_number}
+                            onChange={handleChange}
+                        />
+                    </div>
                     
                     <div className="group">
                         <label htmlFor="interest" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
@@ -137,14 +177,27 @@ export default function RegisterPage() {
                                 <option value="system_design">System Design</option>
                                 <option value="ai_ml">AI / Machine Learning</option>
                             </select>
-                            {/* Custom arrow icon */}
                             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                             </div>
                         </div>
                     </div>
 
-                    <InputField label="College / Company" id="college_name" placeholder="Stanford University" />
+                    <div className="group">
+                        <label htmlFor="college_name" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">
+                            College / Company
+                        </label>
+                        <input
+                            id="college_name"
+                            name="college_name"
+                            type="text"
+                            required
+                            className="w-full bg-zinc-900/50 border border-white/10 text-white text-sm rounded-lg px-4 py-2.5 outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-zinc-600 group-hover:border-white/20"
+                            placeholder="Stanford University"
+                            value={formData.college_name}
+                            onChange={handleChange}
+                        />
+                    </div>
                     
                     <div className="group md:col-span-2">
                         <label htmlFor="grad_year" className="block text-xs font-medium text-zinc-400 mb-1.5 ml-1">

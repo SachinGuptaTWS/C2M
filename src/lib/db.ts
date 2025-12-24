@@ -1,4 +1,4 @@
-import { Pool } from '@neondatabase/serverless';
+import { Pool, PoolClient, QueryResult } from '@neondatabase/serverless';
 
 // Create a connection pool
 const pool = new Pool({
@@ -7,7 +7,7 @@ const pool = new Pool({
 });
 
 export default {
-  query: (text: string, params?: any[]) => pool.query(text, params),
-  getClient: () => pool.connect(),
+  query: (text: string, params?: any[]): Promise<QueryResult<any>> => pool.query(text, params),
+  getClient: (): Promise<PoolClient> => pool.connect(),
   // Add other database methods as needed
 };

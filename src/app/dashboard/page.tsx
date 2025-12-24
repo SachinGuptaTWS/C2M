@@ -91,7 +91,7 @@ const StatCard = ({ label, value, icon: Icon, delay = 0 }: any) => (
 );
 
 // 3. Track Selection Card
-const TrackCard = ({ title, subtitle, icon: Icon, href }: any) => (
+const TrackCard = ({ title, subtitle, icon: Icon, href, progress = 0 }: any) => (
   <motion.a 
     href={href}
     variants={itemVariants}
@@ -111,7 +111,7 @@ const TrackCard = ({ title, subtitle, icon: Icon, href }: any) => (
     </div>
     
     <div className="relative z-10 mt-6 pt-4 border-t border-zinc-900 flex items-center justify-between text-xs text-zinc-600 font-medium">
-      <span>0% Completed</span>
+      <span>{progress}% Completed</span>
       <span className="group-hover:text-white transition-colors">Start Track &rarr;</span>
     </div>
   </motion.a>
@@ -220,6 +220,38 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
 // --- PAGE CONTENT ---
 function DashboardContent() {
   const { user } = useAuth();
+  const [progressData, setProgressData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProgressData();
+  }, []);
+
+  const fetchProgressData = async () => {
+    try {
+      const response = await fetch('/api/user-progress');
+      const data = await response.json();
+      setProgressData(data);
+    } catch (error) {
+      console.error('Error fetching progress:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    return `${hours}h ${minutes}m`;
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <motion.div 
@@ -240,9 +272,21 @@ function DashboardContent() {
 
       {/* Main Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <StatCard label="Time Spent" value="12h 40m" icon={Icons.Clock} />
-        <StatCard label="Current Streak" value="4 Days" icon={Icons.Activity} />
-        <StatCard label="Modules Done" value="8/24" icon={Icons.Command} />
+        <StatCard 
+          label="Time Spent" 
+          value={formatTime(progressData?.stats?.totalWatchedSeconds || 0)} 
+          icon={Icons.Clock} 
+        />
+        <StatCard 
+          label="Current Streak" 
+          value={`${progressData?.stats?.streak || 0} Days`} 
+          icon={Icons.Activity} 
+        />
+        <StatCard 
+          label="Progress" 
+          value={`${progressData?.stats?.watchedVideos || 0}/${progressData?.stats?.totalVideos || 0}`} 
+          icon={Icons.Command} 
+        />
       </div>
 
       <div className="w-full h-px bg-white/[0.06]" />
@@ -260,12 +304,14 @@ function DashboardContent() {
             subtitle="Master modern web development. From React server components to scalable backend architecture using Node and PostgreSQL."
             icon={Icons.Code}
             href="/dashboard/development"
+            progress={progressData?.categories?.find((cat: any) => cat.category === 'DEVELOPMENT')?.completionPercentage || 0}
           />
           <TrackCard 
             title="Data Structures & Algorithms" 
             subtitle="Deep dive into algorithmic complexity, data structures, and pattern recognition for technical interviews."
             icon={Icons.Cpu}
             href="/dashboard/dsa"
+            progress={progressData?.categories?.find((cat: any) => cat.category === 'DSA')?.completionPercentage || 0}
           />
         </div>
       </div>
